@@ -319,8 +319,8 @@ fun GridFactorioGame() {
                                 val items = tile.inventory.filter { it.value > 0 }
                                 if (items.isNotEmpty()) {
                                     Row(horizontalArrangement = Arrangement.Center) {
-                                        items.forEach { (type, count) ->
-                                            Text(text = "${type.emoji}$count", fontSize = 9.sp, color = Color.White)
+                                        items.forEach { entry ->
+                                            Text(text = "${entry.key.emoji}${entry.value}", fontSize = 9.sp, color = Color.White)
                                         }
                                     }
                                 }
@@ -400,7 +400,7 @@ fun GridFactorioGame() {
                                     Text("Внутри лежит: " + items.map { "${it.value}x ${it.key.emoji}" }.joinToString(", "), color = Color.Green, fontSize = 12.sp)
                                     Button(
                                         onClick = {
-                                            tile.inventory.forEach { (type, count) ->
-                                                when (type) {
-                                                    ItemType.IRON_ORE -> walletIronOre += count
- 
+                                            tile.inventory.forEach { entry ->
+                                                val type = entry.key
+                                                val count = entry.value
+                     
