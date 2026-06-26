@@ -155,7 +155,7 @@ fun GridFactorioGame() {
                         if (craftedScience > 0) {
                             tile.inventory[ItemType.CIRCUIT] = circuitsCount - craftedScience
                             tile.inventory[ItemType.IRON_PLATE] = platesIron - craftedScience
-                            globalScience += craftedScience
+                            globalScience = globalScience + craftedScience
                         }
                     }
                     else -> {}
@@ -403,4 +403,4 @@ fun GridFactorioGame() {
                                             tile.inventory.forEach { entry ->
                                                 val type = entry.key
                                                 val count = entry.value
-                     
+      
